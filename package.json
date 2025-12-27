@@ -1,0 +1,57 @@
+{
+  "name": "portfolio-shalini",
+  "version": "1.0.1",
+  "private": true,
+  "author": {
+    "name": "Shalini CR",
+    "email": "crshalini3101@gmail.com",
+    "url": "https://github.com/SHALINICR31"
+  },
+  "description": "Shalini is a Computer Science student and aspiring software developer.",
+  "keywords": [
+    "react",
+    "next",
+    "nextjs",
+    "html",
+    "css",
+    "javascript",
+    "portfolio",
+    "framer-motion",
+    "tailwind",
+    "web-development"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SHALINICR31/portfolio-sha.git"
+  },
+  "homepage": "https://github.com/SHALINICR31/portfolio-sha",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@next/font": "^13.4.4",
+    "framer-motion": "^10.12.16",
+    "next": "14.1.1",
+    "react": "18.2.0",
+    "react-countup": "^6.4.2",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.12.0",
+    "react-tsparticles": "^2.12.2",
+    "react-type-animation": "^3.2.0",
+    "swiper": "^9.4.0",
+    "tailwind-scrollbar": "^3.0.4",
+    "tsparticles": "^2.12.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  }
+}
