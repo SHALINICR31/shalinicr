@@ -247,45 +247,44 @@ const Services = () => {
               </button>
 
               {/* MEDIA */}
-              <div>
-                {activeProject.videoFile ? (
-                  <video
-  controls
-  muted
-  playsInline
-  preload="metadata"
-  className="rounded-lg w-full h-80 object-cover bg-black"
->
-  <source src={activeProject.videoFile} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+      {/* MEDIA */}
+<div>
+   {item.videoFile && (
+  <video
+    controls
+    muted
+    playsInline
+    preload="metadata"
+    className="rounded-lg w-full h-80 object-cover bg-black mt-4"
+  >
+    <source src={item.videoFile} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+)}
 
-                ) : (
-                  activeProject.images && (
-                    <>
-                      <img
-                        src={activeProject.images[imgIndex]}
-                        className="rounded-lg w-full h-80 object-cover"
-                      />
-                      {activeProject.images.length > 1 && (
-                        <div className="flex gap-3 mt-4 justify-center">
-                          {activeProject.images.map((_, i) => (
-                            <button
-                              key={i}
-                              onClick={() => setImgIndex(i)}
-                              className={`w-3 h-3 rounded-full ${
-                                imgIndex === i
-                                  ? "bg-accent"
-                                  : "bg-white/30"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  )
-                )}
-              </div>
+  {activeProject.images && activeProject.images.length > 0 && (
+    <>
+      <img
+        src={activeProject.images[imgIndex]}
+        className="rounded-lg w-full h-80 object-cover mt-4"
+      />
+      {activeProject.images.length > 1 && (
+        <div className="flex gap-3 mt-4 justify-center">
+          {activeProject.images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setImgIndex(i)}
+              className={`w-3 h-3 rounded-full ${
+                imgIndex === i ? "bg-accent" : "bg-white/30"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  )}
+</div>
+
 
               {/* CONTENT */}
               <div>
