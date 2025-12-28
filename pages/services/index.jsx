@@ -33,7 +33,7 @@ const learningData = [
   {
     title: "App Development",
     date: "november 2025",
-    videoFile: "/videos/sih.mp4",
+    videoFile: "https://res.cloudinary.com/dxc9qdbfw/video/upload/v1766889482/sih_fnev3g.mp4",
     description:
       "Practiced component-based architecture, responsive layouts, animations using Framer Motion and clean UI design.",
     points: [

@@ -77,12 +77,11 @@ const aboutData = [
       {
         title: "Online Shopping Mart",
         stage: "Java, MySQL | Jun 2024 – Dec 2024",
-        videoFile: "/videos/project1.mp4",
-      },
+        videoFile: "https://res.cloudinary.com/dxc9qdbfw/video/upload/v1766889658/project1_nc8pf3.mp4",
       {
         title: "Healthcare Management System",
         stage: "PHP | Jan 2025 – Apr 2025",
-        videoFile: "/videos/project2.mp4",
+        videoFile: "https://res.cloudinary.com/dxc9qdbfw/video/upload/v1766889670/project2_uvhnrg.mp4",
       },
       {
         title: "Brain Tumor Detection",
