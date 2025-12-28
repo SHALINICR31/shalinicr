@@ -43,6 +43,9 @@ const learningData = [
     description: "Cybersecurity hands-on labs and challenges.",
     points: ["Linux basics", "Networking", "Security concepts"],
   },
+  { title: "Selenium Testing", date: "September 2025", description: "Hands-on experience with Selenium for basic web automation and test case execution.", points: [ "Automated basic browser interactions using Selenium WebDriver", "Performed form submission and UI validation", "Executed simple test cases on web applications", ], },
+
+  { title: "Azure", date: "December 2025", images: ["/recent/z1.png", "/recent/z2.png", "/recent/z3.png", "/recent/z4.png"], description: "Azure fundamentals and hands-on cloud labs.", points: ["Azure services", "Cloud concepts", "Hands-on labs"], }, { title: "NS3 Simulation", date: "November 2025", images: ["/recent/ns3.png"], description: "Network simulation using NS3.", points: ["Network simulation", "Packet analysis", "Routing"], }, { title: "OSSEC-HIDS", date: "October 2025", images: ["/recent/r1.png","/recent/r2.png","/recent/r3.png","/recent/r4.png","/recent/r5.png","/recent/r6.png","/recent/r7.png"], description: "Host-based intrusion detection system configuration and analysis.", points: ["Log monitoring", "Threat detection", "Security alerts"], }, { title: "Cisco Packet Tracer", date: "October 2025", images: ["/recent/cc1.png", "/recent/cc2.png"], description: "Network design and simulation.", points: ["Routing", "Switching", "Network topology"], }, { title: "MetaMask", date: "November 2025", images: ["/recent/b1.png","/recent/b2.png","/recent/b3.png","/recent/b4.png","/recent/b5.png","/recent/b6.png","/recent/b7.png","/recent/b8.png","/recent/b9.png","/recent/b10.png","/recent/b11.png","/recent/b12.png","/recent/b13.png"], description: "MetaMask wallet setup and blockchain interaction.", points: ["Wallet creation", "Blockchain basics", "Web3 interaction"], },
   // ... other items
 ];
 
