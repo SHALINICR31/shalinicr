@@ -250,10 +250,16 @@ const Services = () => {
               <div>
                 {activeProject.videoFile ? (
                   <video
-                    src={activeProject.videoFile}
-                    controls
-                    className="rounded-lg w-full h-80 object-cover"
-                  />
+  controls
+  muted
+  playsInline
+  preload="metadata"
+  className="rounded-lg w-full h-80 object-cover bg-black"
+>
+  <source src={activeProject.videoFile} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
                 ) : (
                   activeProject.images && (
                     <>
