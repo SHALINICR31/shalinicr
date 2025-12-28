@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { fadeIn } from "../../variants";
 import Bulb from "../../components/Bulb";
@@ -9,21 +9,12 @@ import Circles from "../../components/Circles";
 ======================= */
 const typingContainer = {
   hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
 };
 
 const typingText = {
   hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { ease: "easeOut" } },
 };
 
 /* =======================
@@ -39,19 +30,9 @@ const learningData = [
     points: ["Reusable React components", "Responsive UI using Tailwind", "Framer Motion animations"],
   },
   {
-    title: "Selenium Testing",
-    date: "September 2025",
-    description: "Hands-on experience with Selenium for basic web automation and test case execution.",
-    points: [
-      "Automated basic browser interactions using Selenium WebDriver",
-      "Performed form submission and UI validation",
-      "Executed simple test cases on web applications",
-    ],
-  },
-  {
     title: "AWS",
     date: "October 2025",
-    images: ["/recent/aws.png"],
+    pdfFile: "/recent/aws.pdf", // PDF added
     description: "AWS Cloud fundamentals and services learning.",
     points: ["IAM", "EC2", "Cloud fundamentals"],
   },
@@ -62,55 +43,21 @@ const learningData = [
     description: "Cybersecurity hands-on labs and challenges.",
     points: ["Linux basics", "Networking", "Security concepts"],
   },
-  {
-    title: "Azure",
-    date: "December 2025",
-    images: ["/recent/z1.png", "/recent/z2.png", "/recent/z3.png", "/recent/z4.png"],
-    description: "Azure fundamentals and hands-on cloud labs.",
-    points: ["Azure services", "Cloud concepts", "Hands-on labs"],
-  },
-  {
-    title: "NS3 Simulation",
-    date: "November 2025",
-    images: ["/recent/ns3.png"],
-    description: "Network simulation using NS3.",
-    points: ["Network simulation", "Packet analysis", "Routing"],
-  },
-  {
-    title: "OSSEC-HIDS",
-    date: "October 2025",
-    images: ["/recent/r1.png","/recent/r2.png","/recent/r3.png","/recent/r4.png","/recent/r5.png","/recent/r6.png","/recent/r7.png"],
-    description: "Host-based intrusion detection system configuration and analysis.",
-    points: ["Log monitoring", "Threat detection", "Security alerts"],
-  },
-  {
-    title: "Cisco Packet Tracer",
-    date: "October 2025",
-    images: ["/recent/cc1.png", "/recent/cc2.png"],
-    description: "Network design and simulation.",
-    points: ["Routing", "Switching", "Network topology"],
-  },
-  {
-    title: "MetaMask",
-    date: "November 2025",
-    images: ["/recent/b1.png","/recent/b2.png","/recent/b3.png","/recent/b4.png","/recent/b5.png","/recent/b6.png","/recent/b7.png","/recent/b8.png","/recent/b9.png","/recent/b10.png","/recent/b11.png","/recent/b12.png","/recent/b13.png"],
-    description: "MetaMask wallet setup and blockchain interaction.",
-    points: ["Wallet creation", "Blockchain basics", "Web3 interaction"],
-  },
+  // ... other items
 ];
 
 /* =======================
    SERVICES COMPONENT
 ======================= */
 const Services = () => {
-  const [imgIndex, setImgIndex] = useState({}); // Track image index per project
+  const [activeProject, setActiveProject] = useState(null);
+  const [imgIndex, setImgIndex] = useState(0);
 
   return (
     <div
       className="relative min-h-screen py-32 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/o1.jpg')" }}
     >
-      {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/60" />
       <Circles />
 
@@ -124,11 +71,7 @@ const Services = () => {
             animate="visible"
           >
             {"Small moves, strong impact".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={typingText}
-                className={char === " " ? "mx-1" : ""}
-              >
+              <motion.span key={index} variants={typingText} className={char === " " ? "mx-1" : ""}>
                 {char}
               </motion.span>
             ))}
@@ -147,76 +90,30 @@ const Services = () => {
           <div className="absolute left-1/2 top-0 h-full w-[1px] bg-accent/40 -translate-x-1/2" />
           {learningData.map((item, index) => {
             const left = index % 2 === 0;
-
             return (
               <motion.div
                 key={index}
                 variants={fadeIn(left ? "right" : "left", 0.3)}
                 initial="hidden"
                 animate="show"
-                className="relative mb-28 flex items-start"
+                className="relative mb-28 flex items-center"
               >
-                {/* DOT */}
                 <span className="absolute left-1/2 w-4 h-4 bg-accent rounded-full -translate-x-1/2 shadow-[0_0_25px_#f13024]" />
 
                 {/* ROTATING CIRCLE */}
                 <motion.div
+                  onClick={() => {
+                    setActiveProject(item);
+                    setImgIndex(0);
+                  }}
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                  className={`${
-                    left ? "ml-auto pr-20 text-right" : "mr-auto pl-20 text-left"
-                  }`}
+                  className={`${left ? "ml-auto pr-20 text-right" : "mr-auto pl-20 text-left"} cursor-pointer`}
                 >
-                  <div
-                    className="w-56 rounded-xl flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_55px_rgba(241,48,36,0.55)] transition-all duration-300 p-6"
-                  >
+                  <div className="w-56 h-56 rounded-full flex flex-col items-center justify-center text-center bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_55px_rgba(241,48,36,0.55)] transition-all duration-300">
                     <h4 className="text-xl font-semibold text-white">{item.title}</h4>
                     <p className="text-accent text-sm mt-1">{item.date}</p>
-                    <p className="text-white/70 text-sm mt-2">{item.description}</p>
-
-                    {/* VIDEO */}
-                    {item.videoFile && (
-                      <video
-                        controls
-                        muted
-                        playsInline
-                        preload="metadata"
-                        className="rounded-lg w-full h-56 object-cover bg-black mt-4"
-                      >
-                        <source src={item.videoFile} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    )}
-
-                    {/* IMAGES */}
-                    {item.images && item.images.length > 0 && (
-                      <>
-                        <img
-                          src={item.images[imgIndex[item.title] || 0]}
-                          className="rounded-lg w-full h-56 object-cover mt-4"
-                        />
-                        {item.images.length > 1 && (
-                          <div className="flex gap-2 mt-2 justify-center">
-                            {item.images.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={() => setImgIndex(prev => ({ ...prev, [item.title]: i }))}
-                                className={`w-3 h-3 rounded-full ${
-                                  (imgIndex[item.title] || 0) === i ? "bg-accent" : "bg-white/30"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    )}
-
-                    {/* POINTS */}
-                    <ul className="mt-4 list-disc ml-5 text-sm text-white/80">
-                      {item.points.map((p, i) => (
-                        <li key={i}>{p}</li>
-                      ))}
-                    </ul>
+                    <p className="text-white/70 text-sm mt-2">Click to inspect →</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -224,6 +121,93 @@ const Services = () => {
           })}
         </div>
       </div>
+
+      {/* ===== MODAL ===== */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-primary rounded-xl max-w-6xl w-full p-6 relative grid md:grid-cols-2 gap-8"
+              initial={{ scale: 0.85 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.85 }}
+            >
+              <button
+                className="absolute top-4 right-4 text-accent text-2xl"
+                onClick={() => setActiveProject(null)}
+              >
+                ✕
+              </button>
+
+              {/* MEDIA */}
+              <div>
+                {/* PDF */}
+                {activeProject.pdfFile && (
+                  <iframe
+                    src={activeProject.pdfFile}
+                    className="rounded-lg w-full h-80 mt-4"
+                    title={activeProject.title}
+                  />
+                )}
+
+                {/* VIDEO */}
+                {activeProject.videoFile && (
+                  <video
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="rounded-lg w-full h-80 object-cover bg-black mt-4"
+                  >
+                    <source src={activeProject.videoFile} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+
+                {/* IMAGES */}
+                {activeProject.images && activeProject.images.length > 0 && (
+                  <>
+                    <img
+                      src={activeProject.images[imgIndex] || 0]}
+                      className="rounded-lg w-full h-80 object-cover mt-4"
+                    />
+                    {activeProject.images.length > 1 && (
+                      <div className="flex gap-3 mt-4 justify-center">
+                        {activeProject.images.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setImgIndex(i)}
+                            className={`w-3 h-3 rounded-full ${
+                              imgIndex === i ? "bg-accent" : "bg-white/30"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+
+              {/* CONTENT */}
+              <div>
+                <h3 className="text-3xl font-bold">{activeProject.title}</h3>
+                <p className="text-accent mt-1">{activeProject.date}</p>
+                <p className="text-white/70 mt-4">{activeProject.description}</p>
+                <ul className="mt-4 list-disc ml-5 text-sm text-white/80">
+                  {activeProject.points?.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Bulb />
     </div>
