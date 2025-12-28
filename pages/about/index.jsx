@@ -300,10 +300,14 @@ const About = () => {
                   )}
                   {item.videoFile && (
                     <video
-                      src={item.videoFile}
-                      controls
-                      className="mt-4 w-full rounded-lg"
-                    />
+  src={item.videoFile}
+  controls
+  preload="metadata"
+  muted
+  playsInline
+  className="mt-4 w-full rounded-lg bg-black"
+/>
+
                   )}
                   {item.images && (
                     <ImageCarousel

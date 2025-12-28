@@ -250,10 +250,14 @@ const Services = () => {
               <div>
                 {activeProject.videoFile ? (
                   <video
-                    src={activeProject.videoFile}
-                    controls
-                    className="rounded-lg w-full h-80 object-cover"
-                  />
+  src={activeProject.videoFile}
+  controls
+  preload="metadata"
+  muted
+  playsInline
+  className="rounded-lg w-full h-80 object-cover bg-black"
+/>
+
                 ) : (
                   activeProject.images && (
                     <>
