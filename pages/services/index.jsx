@@ -249,18 +249,18 @@ const Services = () => {
               {/* MEDIA */}
       {/* MEDIA */}
 <div>
-   {item.videoFile && (
-  <video
-    controls
-    muted
-    playsInline
-    preload="metadata"
-    className="rounded-lg w-full h-80 object-cover bg-black mt-4"
-  >
-    <source src={item.videoFile} type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-)}
+  {activeProject.videoFile && (
+    <video
+      controls
+      muted
+      playsInline
+      preload="metadata"
+      className="rounded-lg w-full h-80 object-cover bg-black mt-4"
+    >
+      <source src={activeProject.videoFile} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  )}
 
   {activeProject.images && activeProject.images.length > 0 && (
     <>
