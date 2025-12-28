@@ -299,14 +299,18 @@ const About = () => {
                     </p>
                   )}
                   {item.videoFile && (
-                    <video
-  src={item.videoFile}
+                   <video
+  key={activeProject.videoFile}   // IMPORTANT
   controls
-  preload="metadata"
   muted
   playsInline
-  className="mt-4 w-full rounded-lg bg-black"
-/>
+  preload="metadata"
+  className="rounded-lg w-full h-80 bg-black"
+>
+  <source src={activeProject.videoFile} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
 
                   )}
                   {item.images && (
