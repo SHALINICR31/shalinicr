@@ -173,9 +173,10 @@ const Services = () => {
                 {activeProject.images && activeProject.images.length > 0 && (
                   <>
                     <img
-                      src={activeProject.images[imgIndex] || 0]}
-                      className="rounded-lg w-full h-80 object-cover mt-4"
-                    />
+  src={activeProject.images[imgIndex] || activeProject.images[0]} // ✅ fixed
+  className="rounded-lg w-full h-80 object-cover mt-4"
+/>
+
                     {activeProject.images.length > 1 && (
                       <div className="flex gap-3 mt-4 justify-center">
                         {activeProject.images.map((_, i) => (
