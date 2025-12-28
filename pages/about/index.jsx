@@ -78,7 +78,8 @@ const aboutData = [
         title: "Online Shopping Mart",
         stage: "Java, MySQL | Jun 2024 – Dec 2024",
         videoFile: "https://res.cloudinary.com/dxc9qdbfw/video/upload/v1766889658/project1_nc8pf3.mp4",
-      {
+      },
+        {
         title: "Healthcare Management System",
         stage: "PHP | Jan 2025 – Apr 2025",
         videoFile: "https://res.cloudinary.com/dxc9qdbfw/video/upload/v1766889670/project2_uvhnrg.mp4",
@@ -298,19 +299,18 @@ const About = () => {
                     </p>
                   )}
                   {item.videoFile && (
-                    <video
-  controls
-  muted
-  playsInline
-  preload="metadata"
-  className="rounded-lg w-full h-80 object-cover bg-black"
->
-  <source src={activeProject.videoFile} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+  <video
+    controls
+    muted
+    playsInline
+    preload="metadata"
+    className="rounded-lg w-full h-80 object-cover bg-black mt-4"
+  >
+    <source src={item.videoFile} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+)}
 
-
-                  )}
                   {item.images && (
                     <ImageCarousel
                       images={item.images}
